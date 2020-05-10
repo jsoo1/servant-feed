@@ -1,0 +1,26 @@
+name:                servant-feed
+version:             0.0.1.0
+synopsis:            Atom and RSS feeds for Servant APIs
+description:         Content-Type atom+xml and rss+xml feeds for use with Servant.
+license:             BSD3
+license-file:        LICENSE
+author:              John Soo
+maintainer:          jsoo1@asu.edu
+copyright:           2020 John Soo
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+tested-with:         ghc == 8.6.5
+extra-source-files: README.md
+
+library
+  exposed-modules: Servant.Atom
+                 , Servant.RSS
+  build-depends: base >=4.12 && <4.14
+               , bytestring ==0.10.*
+               , http-media ==0.8.*
+               , servant ==0.17.*
+               , xmlbf ==0.6.*
+               , xmlbf-xeno ==0.2.*
+  hs-source-dirs: .
+  default-language:    Haskell2010
