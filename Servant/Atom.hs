@@ -20,7 +20,7 @@ import Data.ByteString.Builder (toLazyByteString)
 import Data.ByteString.Lazy (toStrict)
 import Network.HTTP.Media ((//))
 import Servant.API (Accept (..), MimeRender (..), MimeUnrender (..))
-import Xmlbf (FromXml (..), ToXml (..), encode, runParser)
+import Xmlbf (FromXml (..), ToXml (..), encode, parse)
 import Xmlbf.Xeno (fromRawXml)
 
 -- | Content-Type /application\/atom+xml/. Use in Servant endpoints.
@@ -46,4 +46,4 @@ instance ToXml a => MimeRender Atom a where
   mimeRender _ = toLazyByteString . encode . toXml
 
 instance FromXml a => MimeUnrender Atom a where
-  mimeUnrender _ bs = fromRawXml (toStrict bs) >>= runParser fromXml
+  mimeUnrender _ bs = fromRawXml (toStrict bs) >>= parse fromXml
